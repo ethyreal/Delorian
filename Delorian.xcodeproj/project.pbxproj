@@ -10,6 +10,9 @@
 		E7F998A123568FDD00D69078 /* Delorian.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F9989723568FDD00D69078 /* Delorian.framework */; };
 		E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998A523568FDD00D69078 /* DelorianTests.swift */; };
 		E7F998A823568FDD00D69078 /* Delorian.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F9989A23568FDD00D69078 /* Delorian.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7F998B32356905900D69078 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998B22356905900D69078 /* Future.swift */; };
+		E7F998B5235690E300D69078 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998B4235690E300D69078 /* FutureTests.swift */; };
+		E7F998B72356920600D69078 /* Result+Convience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998B62356920600D69078 /* Result+Convience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,6 +32,9 @@
 		E7F998A023568FDD00D69078 /* DelorianTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DelorianTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F998A523568FDD00D69078 /* DelorianTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelorianTests.swift; sourceTree = "<group>"; };
 		E7F998A723568FDD00D69078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7F998B22356905900D69078 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		E7F998B4235690E300D69078 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
+		E7F998B62356920600D69078 /* Result+Convience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Convience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +77,7 @@
 		E7F9989923568FDD00D69078 /* Delorian */ = {
 			isa = PBXGroup;
 			children = (
+				E7F998B12356904000D69078 /* Source */,
 				E7F9989A23568FDD00D69078 /* Delorian.h */,
 				E7F9989B23568FDD00D69078 /* Info.plist */,
 			);
@@ -81,9 +88,19 @@
 			isa = PBXGroup;
 			children = (
 				E7F998A523568FDD00D69078 /* DelorianTests.swift */,
+				E7F998B4235690E300D69078 /* FutureTests.swift */,
 				E7F998A723568FDD00D69078 /* Info.plist */,
 			);
 			path = DelorianTests;
+			sourceTree = "<group>";
+		};
+		E7F998B12356904000D69078 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				E7F998B22356905900D69078 /* Future.swift */,
+				E7F998B62356920600D69078 /* Result+Convience.swift */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -148,6 +165,7 @@
 				TargetAttributes = {
 					E7F9989623568FDD00D69078 = {
 						CreatedOnToolsVersion = 11.1;
+						LastSwiftMigration = 1110;
 					};
 					E7F9989F23568FDD00D69078 = {
 						CreatedOnToolsVersion = 11.1;
@@ -195,6 +213,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F998B32356905900D69078 /* Future.swift in Sources */,
+				E7F998B72356920600D69078 /* Result+Convience.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E7F998B5235690E300D69078 /* FutureTests.swift in Sources */,
 				E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -340,6 +361,7 @@
 		E7F998AC23568FDD00D69078 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -355,6 +377,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.ethyeal.Delorian;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -363,6 +386,7 @@
 		E7F998AD23568FDD00D69078 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
@@ -386,6 +410,7 @@
 		E7F998AF23568FDD00D69078 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DelorianTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -403,6 +428,7 @@
 		E7F998B023568FDD00D69078 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = DelorianTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
