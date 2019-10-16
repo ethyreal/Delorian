@@ -56,9 +56,10 @@ extension FutureTests {
 
         let exp = expectation(description: "async")
 
+        let underlyingError = MockError()
         let sut = Future<String>(on: DispatchQueue.main) { callback in
             self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<String, Error>.failure(MockError()))
+                callback(Result<String, Error>.failure(underlyingError))
             }
         }
         sut.onResult { (result) in
@@ -66,9 +67,12 @@ extension FutureTests {
                 XCTFail("should have no value to map over")
             }
             _ = result.mapError { (error) -> Error in
-                let nsError = error as NSError
-                XCTAssert(nsError.code == 23)
-                return error
+                guard let err = error as? MockError else {
+                    XCTFail("expected MockError")
+                    return error
+                }
+                XCTAssert(err.code == underlyingError.code)
+                return err
             }
             exp.fulfill()
         }
