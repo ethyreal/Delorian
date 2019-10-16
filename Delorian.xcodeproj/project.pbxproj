@@ -13,6 +13,7 @@
 		E7F998B32356905900D69078 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998B22356905900D69078 /* Future.swift */; };
 		E7F998B5235690E300D69078 /* FutureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998B4235690E300D69078 /* FutureTests.swift */; };
 		E7F998B72356920600D69078 /* Result+Convience.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998B62356920600D69078 /* Result+Convience.swift */; };
+		E7F998E52357648C00D69078 /* MockError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998E42357648C00D69078 /* MockError.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		E7F998B22356905900D69078 /* Future.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		E7F998B4235690E300D69078 /* FutureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FutureTests.swift; sourceTree = "<group>"; };
 		E7F998B62356920600D69078 /* Result+Convience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Result+Convience.swift"; sourceTree = "<group>"; };
+		E7F998E42357648C00D69078 /* MockError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockError.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 		E7F998A423568FDD00D69078 /* DelorianTests */ = {
 			isa = PBXGroup;
 			children = (
+				E7F998E32357647400D69078 /* Mocks */,
 				E7F998A523568FDD00D69078 /* DelorianTests.swift */,
 				E7F998B4235690E300D69078 /* FutureTests.swift */,
 				E7F998A723568FDD00D69078 /* Info.plist */,
@@ -101,6 +104,14 @@
 				E7F998B62356920600D69078 /* Result+Convience.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		E7F998E32357647400D69078 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				E7F998E42357648C00D69078 /* MockError.swift */,
+			);
+			path = Mocks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7F998B5235690E300D69078 /* FutureTests.swift in Sources */,
+				E7F998E52357648C00D69078 /* MockError.swift in Sources */,
 				E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

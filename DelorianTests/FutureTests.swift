@@ -21,12 +21,12 @@ extension FutureTests {
 
         let sut = Future<Int>(on: DispatchQueue.main) { callback in
             self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<Int, Error>.success(23))
+                callback(Result<Int, Error>.success(88))
             }
         }
         sut.onResult { (result) in
             XCTAssertNotNil(result.value)
-            XCTAssert(result.value == 23)
+            XCTAssert(result.value == 88)
             exp.fulfill()
         }
 
@@ -37,14 +37,14 @@ extension FutureTests {
 
         let sut = Future<Int>(on: DispatchQueue.main) { callback in
             self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<Int, Error>.success(42))
+                callback(Result<Int, Error>.success(88))
             }
         }
         let exps = [expectation(description: "1st async"), expectation(description: "2nd async"), expectation(description: "3rd async")]
         exps.forEach { exp in
             sut.onResult { (result) in
                 XCTAssertNotNil(result.value)
-                XCTAssert(result.value == 42)
+                XCTAssert(result.value == 88)
                 exp.fulfill()
             }
         }
@@ -58,7 +58,7 @@ extension FutureTests {
 
         let sut = Future<String>(on: DispatchQueue.main) { callback in
             self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<String, Error>.failure(NSError(domain: "", code: 23, userInfo: nil)))
+                callback(Result<String, Error>.failure(MockError()))
             }
         }
         sut.onResult { (result) in
@@ -98,4 +98,30 @@ extension FutureTests {
         wait(for: [exp], timeout: 10)
 
     }
+}
+
+extension FutureTests {
+
+    func testInit_withValue() {
+        let expected = "Make like a tree..."
+        var actual:String? = nil
+        let sut = Future(value: expected)
+        sut.onResult { (result) in
+            actual = result.value
+        }
+        XCTAssertNotNil(actual, "callback should have been called immediatly to set this")
+        XCTAssert(actual == expected)
+    }
+
+    func testInit_withError() {
+        let expected = MockError()
+        var actual:Error? = nil
+        let sut = Future<Bool>(error: expected)
+        sut.onResult { (result) in
+            actual = result.error
+        }
+        XCTAssertNotNil(actual, "callback should have been called immediatly to set this")
+        XCTAssert((actual as? MockError) == expected)
+    }
+
 }

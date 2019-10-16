@@ -26,11 +26,17 @@ public final class Future<Value> {
         work(self._setValue)
     }
 
+    /// Creates a Future with a success result value
+    /// - Parameter notifyQueue: a `DispatchQueue` the caller wishes to be notified on (eg. DispatchQueue.main).
+    /// - Parameter value: A value to wrap in a `Result.success`.
     public init(on notifyQueue: DispatchQueue = DispatchQueue.main, value:Value) {
         self.notifyQueue = notifyQueue
         self._setValue(.success(value))
     }
 
+    /// Creates a Future with a failing result value
+    /// - Parameter notifyQueue: a `DispatchQueue` the caller wishes to be notified on (eg. DispatchQueue.main).
+    /// - Parameter value: An `error` to wrap in a `Result.failure`.
     public init(on notifyQueue: DispatchQueue = DispatchQueue.main, error:Error) {
         self.notifyQueue = notifyQueue
         self._setValue(.failure(error))
