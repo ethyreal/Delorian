@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E741AEEE23A94B480074041B /* DataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741AEED23A94B470074041B /* DataTransport.swift */; };
 		E7F998A123568FDD00D69078 /* Delorian.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F9989723568FDD00D69078 /* Delorian.framework */; };
 		E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998A523568FDD00D69078 /* DelorianTests.swift */; };
 		E7F998A823568FDD00D69078 /* Delorian.h in Headers */ = {isa = PBXBuildFile; fileRef = E7F9989A23568FDD00D69078 /* Delorian.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -27,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E741AEED23A94B470074041B /* DataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransport.swift; sourceTree = "<group>"; };
 		E7F9989723568FDD00D69078 /* Delorian.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delorian.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F9989A23568FDD00D69078 /* Delorian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delorian.h; sourceTree = "<group>"; };
 		E7F9989B23568FDD00D69078 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			children = (
 				E7F998B22356905900D69078 /* Future.swift */,
 				E7F998B62356920600D69078 /* Result+Convience.swift */,
+				E741AEED23A94B470074041B /* DataTransport.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -224,6 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E741AEEE23A94B480074041B /* DataTransport.swift in Sources */,
 				E7F998B32356905900D69078 /* Future.swift in Sources */,
 				E7F998B72356920600D69078 /* Result+Convience.swift in Sources */,
 			);
