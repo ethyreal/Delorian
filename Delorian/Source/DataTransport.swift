@@ -8,26 +8,27 @@
 
 import Foundation
 
+/// Network request basic interface
 public protocol DataTransport {
     
     func loadRequest(_ request: URLRequest, completion: @escaping (Result<(Data, HTTPResponseMeta), Error>) -> Void) -> Cancellable
 }
 
+/// A representation of a cancellable process
 public protocol Cancellable {
     func cancel()
 }
 
 extension URLSessionTask: Cancellable {}
 
-public protocol HTTPResponseMeta {
-    var statusCode: Int { get }
-    var allHeaderFields: [AnyHashable : Any] { get }
-}
-
-extension HTTPURLResponse: HTTPResponseMeta {}
-
-
 extension URLSession: DataTransport {
+    
+    
+    /// Load a URLRequest and send a nice Result to the completion
+    ///  Basically converts `(Data?, URLResponse?, Error?) -> Void)` to `(Result<(Data, HTTPResponsable), Error>) -> Void)` to simplify parsing
+    /// - Parameters:
+    ///   - request: A `URLRequest` instance
+    ///   - completion: A closure to continue parsing the response
     public func loadRequest(_ request: URLRequest, completion: @escaping (Result<(Data, HTTPResponseMeta), Error>) -> Void) -> Cancellable {
         let task = dataTask(with: request) { (data, response, error) in
             let result = validateErrors((data, response, error))
@@ -40,6 +41,15 @@ extension URLSession: DataTransport {
         return task
     }
 }
+
+/// A Description of the HTTPResponse meta data
+public protocol HTTPResponseMeta {
+    var statusCode: Int { get }
+    var allHeaderFields: [AnyHashable : Any] { get }
+}
+
+extension HTTPURLResponse: HTTPResponseMeta {}
+
 
 
 //MARK:- Response Parsing
