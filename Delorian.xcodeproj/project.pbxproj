@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E70013732410652800CC0D81 /* MockDataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013722410652800CC0D81 /* MockDataTransport.swift */; };
 		E70013962412F12E00CC0D81 /* URLRequest+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013952412F12E00CC0D81 /* URLRequest+Actions.swift */; };
+		E70013982412F5EC00CC0D81 /* URLRequest+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013972412F5EC00CC0D81 /* URLRequest+Factory.swift */; };
+		E700139A2412F60B00CC0D81 /* URLRequest+Headers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013992412F60B00CC0D81 /* URLRequest+Headers.swift */; };
+		E700139C2412F79400CC0D81 /* URLRequestFactoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E700139B2412F79400CC0D81 /* URLRequestFactoryTests.swift */; };
 		E741AEEE23A94B480074041B /* DataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741AEED23A94B470074041B /* DataTransport.swift */; };
 		E7F998A123568FDD00D69078 /* Delorian.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F9989723568FDD00D69078 /* Delorian.framework */; };
 		E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998A523568FDD00D69078 /* DelorianTests.swift */; };
@@ -32,6 +35,9 @@
 /* Begin PBXFileReference section */
 		E70013722410652800CC0D81 /* MockDataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockDataTransport.swift; sourceTree = "<group>"; };
 		E70013952412F12E00CC0D81 /* URLRequest+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Actions.swift"; sourceTree = "<group>"; };
+		E70013972412F5EC00CC0D81 /* URLRequest+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Factory.swift"; sourceTree = "<group>"; };
+		E70013992412F60B00CC0D81 /* URLRequest+Headers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+Headers.swift"; sourceTree = "<group>"; };
+		E700139B2412F79400CC0D81 /* URLRequestFactoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLRequestFactoryTests.swift; sourceTree = "<group>"; };
 		E741AEED23A94B470074041B /* DataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransport.swift; sourceTree = "<group>"; };
 		E7F9989723568FDD00D69078 /* Delorian.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delorian.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F9989A23568FDD00D69078 /* Delorian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delorian.h; sourceTree = "<group>"; };
@@ -99,6 +105,7 @@
 				E7F998A523568FDD00D69078 /* DelorianTests.swift */,
 				E7F998B4235690E300D69078 /* FutureTests.swift */,
 				E7F998A723568FDD00D69078 /* Info.plist */,
+				E700139B2412F79400CC0D81 /* URLRequestFactoryTests.swift */,
 			);
 			path = DelorianTests;
 			sourceTree = "<group>";
@@ -110,6 +117,8 @@
 				E7F998B62356920600D69078 /* Result+Convience.swift */,
 				E741AEED23A94B470074041B /* DataTransport.swift */,
 				E70013952412F12E00CC0D81 /* URLRequest+Actions.swift */,
+				E70013972412F5EC00CC0D81 /* URLRequest+Factory.swift */,
+				E70013992412F60B00CC0D81 /* URLRequest+Headers.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -234,8 +243,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				E741AEEE23A94B480074041B /* DataTransport.swift in Sources */,
+				E70013982412F5EC00CC0D81 /* URLRequest+Factory.swift in Sources */,
 				E7F998B32356905900D69078 /* Future.swift in Sources */,
 				E7F998B72356920600D69078 /* Result+Convience.swift in Sources */,
+				E700139A2412F60B00CC0D81 /* URLRequest+Headers.swift in Sources */,
 				E70013962412F12E00CC0D81 /* URLRequest+Actions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,6 +258,7 @@
 				E7F998B5235690E300D69078 /* FutureTests.swift in Sources */,
 				E7F998E52357648C00D69078 /* MockError.swift in Sources */,
 				E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */,
+				E700139C2412F79400CC0D81 /* URLRequestFactoryTests.swift in Sources */,
 				E70013732410652800CC0D81 /* MockDataTransport.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
