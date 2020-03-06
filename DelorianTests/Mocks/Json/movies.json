@@ -1,0 +1,30 @@
+{
+    "meta": {
+        "message": "Success"
+        "code": 200
+    },
+    "data": [
+        {
+            "Title":"Back to the Future",
+            "Rated":"PG",
+            "Released":"03 Jul 1985",
+            "Runtime":"116 min"
+        },
+        {
+            "Title":"Back to the Future Part II",
+            "Rated":"PG",
+            "Released":"22 Nov 1989",
+            "Runtime":"108 min"
+        },
+        {
+            "Title":"Back to the Future Part III",
+            "Rated":"PG",
+            "Released":"25 May 1990",
+            "Runtime":"118 min"
+        },
+    ]
+ }
+
+
+
+
