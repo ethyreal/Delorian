@@ -17,6 +17,8 @@
 		E70013A32412FFDB00CC0D81 /* JsonConversionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013A22412FFDB00CC0D81 /* JsonConversionTests.swift */; };
 		E70013A52413014E00CC0D81 /* movies.json in Resources */ = {isa = PBXBuildFile; fileRef = E70013A42413014E00CC0D81 /* movies.json */; };
 		E70013A7241302EC00CC0D81 /* invalid.json in Resources */ = {isa = PBXBuildFile; fileRef = E70013A6241302EC00CC0D81 /* invalid.json */; };
+		E70013A92416FD0000CC0D81 /* String+Encoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013A82416FD0000CC0D81 /* String+Encoding.swift */; };
+		E70013AB2416FDB300CC0D81 /* StringEncodingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E70013AA2416FDB300CC0D81 /* StringEncodingTests.swift */; };
 		E741AEEE23A94B480074041B /* DataTransport.swift in Sources */ = {isa = PBXBuildFile; fileRef = E741AEED23A94B470074041B /* DataTransport.swift */; };
 		E7F998A123568FDD00D69078 /* Delorian.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F9989723568FDD00D69078 /* Delorian.framework */; };
 		E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7F998A523568FDD00D69078 /* DelorianTests.swift */; };
@@ -48,6 +50,8 @@
 		E70013A22412FFDB00CC0D81 /* JsonConversionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonConversionTests.swift; sourceTree = "<group>"; };
 		E70013A42413014E00CC0D81 /* movies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movies.json; sourceTree = "<group>"; };
 		E70013A6241302EC00CC0D81 /* invalid.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = invalid.json; sourceTree = "<group>"; };
+		E70013A82416FD0000CC0D81 /* String+Encoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Encoding.swift"; sourceTree = "<group>"; };
+		E70013AA2416FDB300CC0D81 /* StringEncodingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringEncodingTests.swift; sourceTree = "<group>"; };
 		E741AEED23A94B470074041B /* DataTransport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataTransport.swift; sourceTree = "<group>"; };
 		E7F9989723568FDD00D69078 /* Delorian.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Delorian.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7F9989A23568FDD00D69078 /* Delorian.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Delorian.h; sourceTree = "<group>"; };
@@ -126,6 +130,7 @@
 				E7F998A723568FDD00D69078 /* Info.plist */,
 				E700139B2412F79400CC0D81 /* URLRequestFactoryTests.swift */,
 				E70013A22412FFDB00CC0D81 /* JsonConversionTests.swift */,
+				E70013AA2416FDB300CC0D81 /* StringEncodingTests.swift */,
 			);
 			path = DelorianTests;
 			sourceTree = "<group>";
@@ -141,6 +146,7 @@
 				E70013992412F60B00CC0D81 /* URLRequest+Headers.swift */,
 				E700139D2412FC3000CC0D81 /* JsonConversion.swift */,
 				E700139F2412FD5500CC0D81 /* Bundle+Querying.swift */,
+				E70013A82416FD0000CC0D81 /* String+Encoding.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -271,6 +277,7 @@
 				E70013A02412FD5500CC0D81 /* Bundle+Querying.swift in Sources */,
 				E70013982412F5EC00CC0D81 /* URLRequest+Factory.swift in Sources */,
 				E700139E2412FC3000CC0D81 /* JsonConversion.swift in Sources */,
+				E70013A92416FD0000CC0D81 /* String+Encoding.swift in Sources */,
 				E7F998B32356905900D69078 /* Future.swift in Sources */,
 				E7F998B72356920600D69078 /* Result+Convience.swift in Sources */,
 				E700139A2412F60B00CC0D81 /* URLRequest+Headers.swift in Sources */,
@@ -284,6 +291,7 @@
 			files = (
 				E7F998B5235690E300D69078 /* FutureTests.swift in Sources */,
 				E70013A32412FFDB00CC0D81 /* JsonConversionTests.swift in Sources */,
+				E70013AB2416FDB300CC0D81 /* StringEncodingTests.swift in Sources */,
 				E7F998E52357648C00D69078 /* MockError.swift in Sources */,
 				E7F998A623568FDD00D69078 /* DelorianTests.swift in Sources */,
 				E700139C2412F79400CC0D81 /* URLRequestFactoryTests.swift in Sources */,

@@ -39,6 +39,10 @@ public func jsonDictionaryFromJsonFile(_ fileName: String, in bundle: Bundle = B
         .flatMap(jsonDictionaryFromData)
 }
 
+public func formEncodedStringFromJson(_ json: JsonDictionary) -> String? {
+    return json.toFormEncodedString()
+}
+
 public func prettifyJsonData(_ data: Data) -> Result<Data, Error> {
     jsonDictionaryFromData(data).flatMap(dataFromJson)
 }
@@ -47,6 +51,11 @@ extension Dictionary where Key == String {
     
     public func toData(options: JSONSerialization.WritingOptions = [.prettyPrinted]) -> Data? {
         return try? JSONSerialization.data(withJSONObject: self, options: options)
+    }
+    
+    public func toFormEncodedString() -> String? {
+        return self.map { $0.addingFormEncoding() + "=" + String(describing: $1).addingFormEncoding() }
+            .joined(separator: "&")
     }
 }
 
