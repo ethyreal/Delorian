@@ -14,55 +14,62 @@ class FutureTests: XCTestCase {
 }
 
 extension FutureTests {
-
+    
     func testAsync() {
-
-        let exp = expectation(description: "async")
-
-        let sut = Future<Int>(on: DispatchQueue.main) { callback in
-            self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<Int, Error>.success(88))
+        let expSuccess = expectation(description: "async success")
+        let expComplete = expectation(description: "async complete")
+        let success = true
+        let future = Future<Int>(on: .main) { promiseComplete in
+            // calculate how fast you need to travel
+            self.backgroundQueue.async {
+                if success { // fulfill the promise
+                    promiseComplete(.success(88))
+                } else { // reject the promise
+                    promiseComplete(.failure(MockError()))
+                }
             }
         }
-        sut.onResult { (result) in
-            XCTAssertNotNil(result.value)
-            XCTAssert(result.value == 88)
-            exp.fulfill()
+        future.onSuccess { (value) in
+            XCTAssert(value == 88, "Expected 88 Miles Per Hour")
+            expSuccess.fulfill()
         }
-
-        wait(for: [exp], timeout: 10)
+        future.onFailure { (error) in
+            XCTFail("promise rejected with error: \(error)")
+        }
+        future.onComplete { (result) in
+            expComplete.fulfill()
+        }
+        wait(for: [expSuccess, expComplete], timeout: 10)
     }
-
+    
     func testAsync_multipleCallbacks() {
-
-        let sut = Future<Int>(on: DispatchQueue.main) { callback in
-            self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<Int, Error>.success(88))
+        let sut = Future<Int>() { callback in
+            self.backgroundQueue.async {
+                callback(.success(88))
             }
         }
         let exps = [expectation(description: "1st async"), expectation(description: "2nd async"), expectation(description: "3rd async")]
         exps.forEach { exp in
-            sut.onResult { (result) in
-                XCTAssertNotNil(result.value)
-                XCTAssert(result.value == 88)
+            sut.onComplete { (result) in
+                do {
+                    let value = try result.get()
+                    XCTAssert(value == 88)
+                } catch {
+                    XCTFail("promise rejected with error: \(error)")
+                }
                 exp.fulfill()
             }
         }
         wait(for: exps, timeout: 10)
     }
-
-
+    
     func testAsync_failure() {
-
         let exp = expectation(description: "async")
-
         let underlyingError = MockError()
         let sut = Future<String>(on: DispatchQueue.main) { callback in
-            self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                callback(Result<String, Error>.failure(underlyingError))
-            }
+            callback(.failure(underlyingError))
         }
-        sut.onResult { (result) in
+        sut.onComplete { (result) in
             _ = result.map { _ in
                 XCTFail("should have no value to map over")
             }
@@ -76,56 +83,61 @@ extension FutureTests {
             }
             exp.fulfill()
         }
-
         wait(for: [exp], timeout: 10)
     }
-
-
-    func testFlatMap() {
-
+    
+    func testMap_success() {
         let exp = expectation(description: "async")
-
-        _ = Future<String>(on: DispatchQueue.main) { completion in
-            self.backgroundQueue.asyncAfter(deadline: .now() + 2) {
-                completion(Result<String, Error>.success("back to the future!"))
-            }
-        }.flatMap { value in
-            return Future<String>(on: DispatchQueue.main) { completion in
-                completion(Result<String, Error>.success(value.uppercased()))
-            }
-        }.onResult { (result) in
-            XCTAssertNotNil(result.value)
-            XCTAssert(result.value == "BACK TO THE FUTURE!")
+        _ = Future<String>() { completion in
+            completion(.success("back to the future!"))
+        }.map { value in
+            value.uppercased()
+        }.onSuccess { (value) in
+            XCTAssert(value == "BACK TO THE FUTURE!")
             exp.fulfill()
         }
-
         wait(for: [exp], timeout: 10)
-
+    }
+    
+    func testFlatMap_success() {
+        let exp = expectation(description: "async")
+        _ = Future<String>() { completion in
+            completion(.success("back to the future!"))
+        }.flatMap { value in
+            Future<String>() { completion in
+                completion(.success(value.uppercased()))
+            }
+        }.onSuccess { (value) in
+            XCTAssert(value == "BACK TO THE FUTURE!")
+            exp.fulfill()
+        }
+        wait(for: [exp], timeout: 10)
     }
 }
 
 extension FutureTests {
-
+    
     func testInit_withValue() {
         let expected = "Make like a tree..."
         var actual:String? = nil
         let sut = Future(value: expected)
-        sut.onResult { (result) in
-            actual = result.value
+        sut.onComplete { (result) in
+            actual = try? result.get()
         }
-        XCTAssertNotNil(actual, "callback should have been called immediatly to set this")
+        XCTAssertNotNil(actual, "callback should have been called immediately to set this")
         XCTAssert(actual == expected)
     }
-
+    
     func testInit_withError() {
         let expected = MockError()
         var actual:Error? = nil
         let sut = Future<Bool>(error: expected)
-        sut.onResult { (result) in
-            actual = result.error
+        sut.onComplete { (result) in
+            if case let .failure(error) = result {
+                actual = error
+            }
         }
-        XCTAssertNotNil(actual, "callback should have been called immediatly to set this")
+        XCTAssertNotNil(actual, "callback should have been called immediately to set this")
         XCTAssert((actual as? MockError) == expected)
     }
-
 }
